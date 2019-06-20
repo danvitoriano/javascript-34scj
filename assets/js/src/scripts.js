@@ -42,19 +42,32 @@ const posts = (function () {
                             });
                     }
                 });
+        },    
+        sendSearch: () => {
+            console.log("sendSearch","foi chamado");
+            let searchTerm = document.querySelector("#searchTerm");
+            fetch(url + `?search=${searchTerm.value}`)
+                .then(response=>response.json())
+                .then(json=>{
+                    let searchResults = document.querySelector("#searchResults");
+                    let result = json.map(item=> {
+                         return `<li>${item.title}</li>`;   
+                    });
+                    searchResults.innerHTML = result;
+                });
         }
     }
 }());
 
 const search = (function () {
     return {
-        openSearch: function () {
+        openSearch: () => {
             document.querySelector("#searchLink")
-                .addEventListener("click", ()=> {
-                    let form = document.querySelector("#searchBox > div");
-                    let input = document.querySelector("#searchBox > div > input");
-                    let submitSearch = document.querySelector("#searchSearch");
-                    
+                .addEventListener("click", () => {
+                    let form = document.querySelector("#searchBox");
+                    let input = document.querySelector("#searchTerm");
+                    let submitSearch = document.querySelector("#submitSearch");
+
                     form.style.display = "block";
                     form.animate(
                         [
@@ -68,6 +81,10 @@ const search = (function () {
                             iterations: 1
                         }
                     );
+                    input.focus();
+                    submitSearch.addEventListener("click", () => {
+                        posts.sendSearch();
+                    });
                 });
         }
     };
