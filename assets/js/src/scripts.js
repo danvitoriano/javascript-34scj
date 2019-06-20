@@ -106,6 +106,7 @@ posts.get();
 
 
 /*
+https://wordpad.cc/34scj
 function reqListener(evt) {
     console.log(arguments, evt);
     console.debug(this.responseText);
