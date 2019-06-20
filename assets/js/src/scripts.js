@@ -7,10 +7,16 @@ fetch(url)
                 .then(
                     function(data){
                         var blogWrapper = document.getElementById("demo");
-                        var allPosts = data.map(item => (
-                                console.log("data => ", item)
-                            )
-                        )
+                        var allPosts = data.map(item => {
+                            var title = `<h2 ='blog-post-title'>${item.title}</h2>`;
+                            var body = `<p>${item.body}</p>`;
+                            var meta = `<p class='blog-post-meta'>Post #<a href='#'/>${item.id}</p>`;
+                            var blogPost = `<div class='blog-post'>${title + meta + '<hr/>' + body}</div>`;
+                            return blogPost;
+                        })
+                        .join("")
+                        
+                        blogWrapper.innerHTML = allPosts;
                     }
                 )
         }
