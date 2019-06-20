@@ -1,3 +1,4 @@
+(function () {
 const url = 'https://5d04064fd1471e00149bb174.mockapi.io/api/v1/blogs';
 
 fetch(url)
@@ -8,12 +9,17 @@ fetch(url)
                     function(data){
                         var blogWrapper = document.getElementById("demo");
                         var allPosts = data.map(item => {
-                            var title = `<h2 ='blog-post-title'>${item.title}</h2>`;
+                            var capitalLetter = item.title.charAt(0).toUpperCase(0);
+                            
+                            var title = `<h2 ='blog-post-title'>${capitalLetter + item.title.slice(1)}</h2>`;
+                            var meta = `<p class='blog-post-meta'>Post #${item.id}</p>`;
                             var body = `<p>${item.body}</p>`;
-                            var meta = `<p class='blog-post-meta'>Post #<a href='#'/>${item.id}</p>`;
-                            var blogPost = `<div class='blog-post'>${title + meta + '<hr/>' + body}</div>`;
+                            
+                            var blogPost = `<div class='blog-post'>${title + meta + body + '<hr/>' + body}</div>`;
+
                             return blogPost;
                         })
+                        .splice(0,4)
                         .join("")
                         
                         blogWrapper.innerHTML = allPosts;
@@ -29,3 +35,4 @@ fetch(url)
 //oReq.onload = reqListener;
 //oReq.open('GET', 'https://5d04064fd1471e00149bb174.mockapi.io/api/v1/blogs', true);
 //oReq.send();
+})()
