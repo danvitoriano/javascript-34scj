@@ -8,19 +8,21 @@ fetch(url)
                 .json()
                 .then(data => { 
                     // console.log("data=> ",data);
-                    var blogWrapper = document.getElementById("demo");
+                    var blogWrapper = document.getElementById("blog-posts");
                     var allPosts = data.map((post,index)=>{
                         //console.log("post=>",post);
                         var postCreatedAt = new Date(post.createdAt).toDateString();
-                       return `
-                        <div class="blog-post">
-                            <h2 class="blog-post-title">${post.title}</h2>
-                            <p class="blog-post-meta">Post#<a href="#">${post.id}</a> - ${postCreatedAt}</p>
-                            <hr>
-                            <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
-                        </div>                       
-                       `;
+                        var capitalLetter = post.title.charAt(0).toUpperCase();
+                        return `
+                            <div class="blog-post">
+                                <h2 class="blog-post-title">${capitalLetter + post.title.slice(1)}</h2>
+                                <p class="blog-post-meta">Post#<a href="#">${post.id}</a> - ${postCreatedAt}</p>
+                                <hr>
+                                <p>${post.body} ${post.body} ${post.body} ${post.body} ${post.body} ${post.body}</p>
+                            </div>                       
+                        `;
                     })
+                    .splice(0,4)
                     .join("");
                     blogWrapper.innerHTML = allPosts;
                 });
