@@ -100,6 +100,9 @@
             From the Firehose
           </h3>
 
+          <div id="demo">
+          </div>
+
           <div class="blog-post">
             <h2 class="blog-post-title">Sample blog post</h2>
             <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
@@ -228,17 +231,6 @@
       });
     </script>
 
-    <script>
-
-      function reqListener() {
-        console.log(this.responseText);
-      }
-
-      var oReq = new XMLHttpRequest();
-
-      oReq.onload = reqListener;
-      oReq.open('get', 'https://5d04064fd1471e00149bb174.mockapi.io/api/v1/blogs');
-      oReq.send();
-    </script>
+    <script src="./src/scripts/scripts.js"></script>
   </body>
 </html>
