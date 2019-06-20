@@ -28,8 +28,19 @@
         <div class="col-4 text-center">
           <a class="blog-header-logo text-dark" href="#">Large</a>
         </div>
-        <div class="col-4 d-flex justify-content-end align-items-center">
-          <a class="text-muted" href="#">
+        <div id="searchBox" class="col-4 d-flex justify-content-end align-items-center">
+
+          <div id="searchDiv" style="display: none">
+
+            <input id="searchTerm" type="search" class="col-7" value="" />
+
+            <button id="submitSearch" class="col-4">Enviar</button>
+
+          </div>
+
+          <ul id="searchResult"></ul>
+
+          <a id="searchLink" class="text-muted" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" class="mx-3">
               <circle cx="10.5" cy="10.5" r="7.5"></circle>
@@ -108,7 +119,7 @@
           From the Firehose
         </h3>
         <div id="demo">
-          
+
         </div>
         <div class="blog-post">
           <h2 class="blog-post-title">Sample blog post</h2>
@@ -133,7 +144,8 @@
           <h2>Heading</h2>
           <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi
             erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at
-            eros.</p>
+            eros.
+          </p>
           <h3>Sub-heading</h3>
           <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
           <pre><code>Example code block</code></pre>
@@ -177,7 +189,8 @@
             nulla sed consectetur.</p>
           <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi
             erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at
-            eros.</p>
+            eros.
+          </p>
         </div>
         <!-- /.blog-post -->
 
