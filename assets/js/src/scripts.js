@@ -31,3 +31,52 @@ const posts = (function () {
         }
     }
 })()
+
+const search = (function () {
+    const url = 'https://5d04064fd1471e00149bb174.mockapi.io/api/v1/blogs';
+
+    return {
+        sendSearch: function(){
+            console.log("Search foi chamada");
+            let searchTerm = document.querySelector("#searchTerm").value;
+            fetch(url + `?search=${searchTerm}`)
+            .then(response => response.json())
+            .then(json => {
+                let searchResult = document.querySelector("#searchResult");
+                let result = json.map(item => (
+                    `<li>${item.title}</li>`
+                )).join()
+                searchResult.innerHTML = result;
+            })
+        },
+        openSearch: function(){
+            document.querySelector('#searchLink')
+            .addEventListener('click', () => {
+                let form = document.querySelector("#searchBox > div");
+                let input = document.querySelector("#searchBox > div > input");
+                let submitSearch = document.querySelector("#searchBox > div > #submitSearch");
+
+                form.style.display = "block";
+                form.animate(
+                    [
+                        // keyframes
+                        { transform: "translateX(15px)" },
+                        { transform: "translateX(0px)" }
+                    ],
+                    {
+                        // timing options
+                        duration: 300,
+                        iterations: 1
+                    }
+                );
+                input.focus();
+                submitSearch.addEventListener("click", () => {
+                    this.sendSearch();
+                })
+            });
+        }
+    }
+})()
+
+search.openSearch();
+posts.get_posts();
